@@ -1,33 +1,40 @@
-# Telecom X - Análise de Evasão de Clientes
+# Telecom X - Analise de Evasao de Clientes
 
-Projeto de análise exploratória de dados sobre evasão de clientes da Telecom X, desenvolvido em Python com foco em ETL, limpeza, visualização e geração de insights para apoiar estratégias de retenção.
+Projeto completo em duas etapas sobre evasao de clientes da Telecom X, cobrindo desde ETL e analise exploratoria ate modelagem preditiva com Machine Learning.
 
 ## Objetivo
 
-Investigar os fatores associados ao churn de clientes, preparando uma base confiável para análises futuras e para a próxima etapa de modelagem preditiva.
+Investigar os fatores associados ao churn de clientes e construir uma base analitica para prever evasao e apoiar estrategias de retencao.
 
 ## Conteúdo do Projeto
 
-- TelecomX_BR.ipynb: notebook principal com extração, tratamento, EDA e relatório final.
+- TelecomX_BR.ipynb: Parte 1 com extracao, tratamento, EDA e relatorio final.
+- TelecomX_tratado.csv: base tratada gerada ao fim da Parte 1.
+- TelecomX_BR_Parte2_Prevendo_Churn.ipynb: Parte 2 com pipeline de Machine Learning e conclusoes estrategicas.
 - TelecomX_Data.json: base de dados em JSON.
-- TelecomX_dicionario.md: dicionário de dados com descrição das variáveis.
+- TelecomX_dicionario.md: dicionario de dados com descricao das variaveis.
 
 ## Etapas Realizadas
 
-1. Extração dos dados a partir de uma fonte remota no GitHub, com fallback local.
-2. Normalização do JSON aninhado para DataFrame.
-3. Limpeza de inconsistências, conversão de tipos e padronização textual.
-4. Criação da variável Contas_Diarias com base no gasto mensal.
-5. Análise descritiva e visual da evasão por variáveis categóricas e numéricas.
-6. Consolidação de conclusões e recomendações dentro do notebook.
+1. Extracao dos dados a partir de fonte remota no GitHub, com fallback local.
+2. Normalizacao do JSON aninhado para DataFrame.
+3. Limpeza de inconsistencias, conversao de tipos e padronizacao textual.
+4. Criacao da variavel Contas_Diarias com base no gasto mensal.
+5. Analise descritiva e visual da evasao por variaveis categoricas e numericas.
+6. Preparacao para modelagem (remocao de ID, encoding e split treino/teste).
+7. Treinamento de dois modelos de classificacao: Regressao Logistica e Random Forest.
+8. Avaliacao com acuracia, precisao, recall, F1-score e matriz de confusao.
+9. Analise de importancia de variaveis e recomendacoes estrategicas de retencao.
 
 ## Principais Insights
 
-- A taxa geral de evasão observada foi de 26,54%.
-- Clientes com contrato mensal apresentaram o maior risco de evasão.
-- O método de pagamento com maior evasão foi cheque eletrônico.
-- Clientes com internet por fibra óptica concentraram a maior taxa de churn.
-- Clientes que evadiram, em média, permaneceram menos tempo na base e tinham gasto mensal maior.
+- A taxa geral de evasao observada foi de 26,54%.
+- Clientes com contrato mensal apresentaram o maior risco de evasao.
+- O metodo de pagamento com maior evasao foi cheque eletronico.
+- Clientes com internet por fibra optica concentraram maior taxa de churn.
+- Na modelagem, a Regressao Logistica apresentou melhor equilibrio entre precision, recall e F1 no conjunto de teste.
+- O Random Forest mostrou sinal de overfitting no comparativo treino x teste.
+- Tempo de contrato, gasto total e tipo de contrato foram fatores centrais para previsao de evasao.
 
 ## Tecnologias Utilizadas
 
@@ -37,6 +44,7 @@ Investigar os fatores associados ao churn de clientes, preparando uma base confi
 - Matplotlib
 - Seaborn
 - Requests
+- Scikit-learn
 - Jupyter Notebook
 
 ## Como Executar
@@ -48,8 +56,8 @@ Investigar os fatores associados ao churn de clientes, preparando uma base confi
 pip install -r requirements.txt
 ```
 
-3. Abra o notebook TelecomX_BR.ipynb.
-4. Execute as células em ordem.
+3. Execute a Parte 1 no notebook `TelecomX_BR.ipynb`.
+4. Em seguida, execute a Parte 2 no notebook `TelecomX_BR_Parte2_Prevendo_Churn.ipynb`.
 
 ## Fonte dos Dados
 
@@ -57,8 +65,8 @@ Os dados são carregados preferencialmente a partir do arquivo remoto:
 
 https://raw.githubusercontent.com/ingridcristh/challenge2-data-science/main/TelecomX_Data.json
 
-## Próximos Passos
+## Proximos Passos
 
-- Construir variáveis derivadas para modelagem.
-- Testar algoritmos preditivos de churn.
-- Avaliar métricas de classificação e interpretar variáveis mais importantes.
+- Testar tecnicas de balanceamento (SMOTE/undersampling) e comparar impacto no recall da classe de evasao.
+- Realizar tuning de hiperparametros com validacao cruzada.
+- Gerar dashboard executivo para acompanhamento de risco de churn.
